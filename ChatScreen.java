@@ -109,7 +109,7 @@ public class ChatScreen extends JFrame implements ActionListener, KeyListener
 			toServer=new BufferedOutputStream(server.getOutputStream());
 			// BufferedOutputStream os = new BufferedOutputStream(server.getOutputStream());
 		
-			toServer.write(("PUB " + userName + " " + message + "\r\n").getBytes()); //here write protocol for socket
+			toServer.write(("PUB " + userName + ": " + message + "\r\n").getBytes()); //here write protocol for socket
 			toServer.flush(); 
 			
 			
@@ -117,7 +117,7 @@ public class ChatScreen extends JFrame implements ActionListener, KeyListener
 			for (int i = 0; i < message.length();i++)
                 buffer.append(message.charAt(i));
 
-            displayArea.append(buffer.toString() + "\n");
+            // displayArea.append(buffer.toString() + "\n");
             sendText.setText("");
             sendText.requestFocus();
 			} //end try

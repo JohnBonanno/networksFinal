@@ -28,9 +28,9 @@ public class ReaderThread implements Runnable
 				//printing message
 
 				//message = ;
-
-				// now display it on the display area
+				if (message != null)
 				screen.displayMessage(message);
+				// now display it on the display area
 				
 			}
 		}

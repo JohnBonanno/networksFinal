@@ -38,12 +38,19 @@ public class client {
 		        os.write((username + "\r\n").getBytes());
 				os.flush();
 
+
+				 
+				/*
+				*
+				*Here we need to read from the ChatScreen instead of the Scanner!
+				*
+				*/
 				message = scanner.nextLine();
-				if(message.length() > 1){
+				while(message.length() > 1){
 				os.write(message.getBytes());
+				os.flush();
 				}
 				
-				os.flush();
 
 				// String line;
 				// line = fromServer.readLine();
