@@ -83,8 +83,8 @@ class Handler
                 
                 else{
                 
-                System.out.println(message);    
-                String msg = message.split(" ")[0];
+                    System.out.println(" MESSAGE with HEADER in else: "+ message);    
+                    String msg = message.split(" ")[0];
                 // BufferedOutputStream ppl = null;
                     for (String user : map.keySet()){
                         //System.out.println(user + " " + map.get(user));
