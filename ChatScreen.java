@@ -181,7 +181,7 @@ public class ChatScreen extends JFrame implements ActionListener, KeyListener
 
 	public static void main(String[] args) throws java.io.IOException {
 		
-		Socket server = new Socket(args[0],PORT);
+		Socket server;
         BufferedReader fromServer = null;
     	BufferedOutputStream os = null;
 
@@ -191,7 +191,7 @@ public class ChatScreen extends JFrame implements ActionListener, KeyListener
 		ChatScreen win = null;
         
         try {
-			//server = ;
+			server = new Socket(args[0],PORT);
 			os = new BufferedOutputStream(server.getOutputStream());
 			fromServer = new BufferedReader(new InputStreamReader(server.getInputStream()));
 
@@ -218,9 +218,9 @@ public class ChatScreen extends JFrame implements ActionListener, KeyListener
 			System.out.println(line);
 			System.err.println(ioe);
 		}
-		finally {
-			if (server != null)
-				server.close();
-		}
+		// finally {
+		// 	if (server != null)
+		// 		server.close();
+		// }
 	}
 }

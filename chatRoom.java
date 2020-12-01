@@ -53,7 +53,7 @@ class Handler
         BufferedOutputStream toClient = null;
         BufferedReader fromClient = null;
         String userName = null;
-        String message = null;
+        String message;
         byte[] buffer = new byte[10000];
         
 
@@ -63,7 +63,7 @@ class Handler
             // while (true) {
                 //System.out.println("enter while loop");
                 message = fromClient.readLine() + "\r\n";
-                System.out.println(message.split(" ")[0]);
+                System.out.println(message.split(" ")[1]); //prints without header
                 System.out.println(map);
                 System.out.println(map.get(userName));
 
@@ -80,7 +80,7 @@ class Handler
                 
                 else{
                 System.out.println(message);
-                String msg = message.split(" ",2)[1];
+                String msg = message.split(" ")[1];
                 // BufferedOutputStream ppl = null;
                     for (String user : map.keySet()){
                         BufferedOutputStream users = map.get(user);
