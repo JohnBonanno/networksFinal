@@ -39,7 +39,10 @@ public class client {
 				os.flush();
 
 				message = scanner.nextLine();
+				if(message.length() > 1){
 				os.write(message.getBytes());
+				}
+				
 				os.flush();
 
 				// String line;

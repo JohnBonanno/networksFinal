@@ -51,8 +51,10 @@ class Handler
      */
     public void process(Socket client, HashMap<String,BufferedOutputStream> map) throws java.io.IOException {
         BufferedOutputStream toClient = null;
+        BufferedOutputStream users = null;
         BufferedReader fromClient = null;
         String userName = null;
+      
         String message;
         byte[] buffer = new byte[10000];
         
@@ -60,7 +62,7 @@ class Handler
         try { 
             fromClient = new BufferedReader(new InputStreamReader(client.getInputStream()));
             toClient = new BufferedOutputStream(client.getOutputStream());
-            // while (true) {
+            while (true) {
                 //System.out.println("enter while loop");
                 message = fromClient.readLine() + "\r\n";
                 // System.out.println(message.split(" ")[1]); //prints without header
@@ -80,24 +82,26 @@ class Handler
                 //System.out.println(map);
                 
                 else{
-                System.out.println(message);
-                String msg = message.split(" ")[1];
+                
+                System.out.println(message);    
+                String msg = message.split(" ")[0];
                 // BufferedOutputStream ppl = null;
                     for (String user : map.keySet()){
                         //System.out.println(user + " " + map.get(user));
-                        BufferedOutputStream users = map.get(user);
+                        users = map.get(user);
                         System.out.println(msg);
-                        if(msg.length() > 1){
-                            users.write(msg.getBytes());
-                        }
-                            users.flush();
+                        
+                        users.write(msg.getBytes());
+                        
+                        
                         
                     }
+                    users.flush();
                 }
                 //     ppl.write(message.getBytes());
                 //     System.out.println(user + ": " + message);
                 //     ppl.flush();
-                // }
+                }
                 
             // }
         }

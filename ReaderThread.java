@@ -27,11 +27,11 @@ public class ReaderThread implements Runnable
 				//parse for message
 				//printing message
 
-
 				//message = ;
 
 				// now display it on the display area
 				screen.displayMessage(message);
+				
 			}
 		}
 		catch (IOException ioe) { System.out.println(ioe); }
