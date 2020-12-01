@@ -149,12 +149,20 @@ public class ChatScreen extends JFrame implements ActionListener, KeyListener
 			sendMessage(); //instead - package into protocl and write to server
 			//os.write(("PUB " + args[1] + " " + message + "\r\n").getBytes()); //here write protocol for socket
 			//os.flush(); 
-		else if (source == exitButton)
+		else if (source == exitButton){
 			//send exit msg
 			//sendMessage(false);
-			//os.write(("LOGOFF " + args[1] + "\r\n").getBytes()); //here write protocol for socket
-			//os.flush(); 
+			try {
+				toServer.write(("LOGOFF " + userName + "\r\n").getBytes()); //here write protocol for socket
+				toServer.flush(); 
+				
+				}
+			catch (java.io.IOException ioe) {
+				System.err.println(ioe);
+			}
+			
 			System.exit(0);
+		}
 	}
         
         /**

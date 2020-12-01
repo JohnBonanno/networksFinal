@@ -76,8 +76,29 @@ class Handler
                     System.out.println(userName);
                     map.put(userName, toClient);
                     System.out.println(map);
-                    toClient.write((userName + " Has Joined the chat. \r\n").getBytes());
-                    toClient.flush();
+                     //String msg = message.split(" ",2)[1];
+                   // System.out.println(msg);
+                // BufferedOutputStream ppl = null;
+                    BufferedOutputStream users = null;
+                    for (String user : map.keySet()){
+                        //System.out.println(user + " " + map.get(user));
+                        users = map.get(user);
+                        users.write((userName + "has Joined the chat. \r\n").getBytes());
+                        users.flush();
+                    }
+                    
+                    
+                    
+                }
+                else if (message.split(" ")[0].equals("LOGOFF")){
+                    //disconnect here
+                    BufferedOutputStream users = null;
+                    for (String user : map.keySet()){
+                        //System.out.println(user + " " + map.get(user));
+                        users = map.get(user);
+                        users.write((userName + "has left the chat. \r\n").getBytes());
+                        users.flush();
+                    }
                 }
                 
                 //System.out.println(userName + client);
